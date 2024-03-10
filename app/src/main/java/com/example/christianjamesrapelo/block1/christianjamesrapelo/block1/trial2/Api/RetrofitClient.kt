@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private const val BASE_URL = "https://buyin-n-sellout-dd59ae5ce084.herokuapp.com/"
+    private const val BASE_URL = "https://buyin-n-sellout-dd59ae5ce084.herokuapp.com/api/"
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->

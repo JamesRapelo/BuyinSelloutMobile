@@ -4,5 +4,11 @@ data class Products(
     val id: Long,
     val title: String,
     val price: String,
+    val image: List<ProductImage>
+)
+data class ProductImage(
+    val id: Int,
+    val product_id: Int,
     val image: String
 )
+

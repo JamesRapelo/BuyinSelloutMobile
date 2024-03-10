@@ -28,11 +28,6 @@
             android:textStyle="bold"
             android:layout_marginTop="8dp"/>
 
-        <TextView
-            android:id="@+id/textViewProductDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

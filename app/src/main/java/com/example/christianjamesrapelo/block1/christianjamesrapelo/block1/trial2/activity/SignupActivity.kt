@@ -50,7 +50,8 @@ class SignupActivity : AppCompatActivity() {
                 reader.beginObject()
                 reader.close()
 
-                RetrofitClient.instance.createUser(name, email, password).enqueue(object :
+                RetrofitClient.instance.createUser(name, email, password)
+                    .enqueue(object :
                     Callback<DefaultResponse> {
                     override fun onResponse(
                         call: Call<DefaultResponse>,

@@ -12,7 +12,7 @@ interface Api {
 
     @FormUrlEncoded
     @Headers("Accept: application/json")
-    @POST("process-register")
+    @POST("account/process-register")
     fun createUser(
         @Field("name") name:String,
         @Field("email") email:String,
@@ -22,7 +22,7 @@ interface Api {
 
     @FormUrlEncoded
     @Headers("Accept: application/json")
-    @POST("login")
+    @POST("account/login")
     fun login(
 
         @Field("email") email: String,

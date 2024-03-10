@@ -1,12 +1,12 @@
-package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.activity
+package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.R
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.databinding.FragmentHomeBinding
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.fragments.GetFragment
 
 
 class HomeFragment : Fragment() {

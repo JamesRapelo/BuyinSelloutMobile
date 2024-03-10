@@ -7,8 +7,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.Api.RetrofitClient
-import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.activity.HomeActivity
-import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.activity.HomeFragment
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.databinding.ActivityLoginBinding
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.DefaultResponse
 import retrofit2.Call
@@ -62,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                         if (response.isSuccessful && response.body() != null) {
                             // Handle successful response
                             Toast.makeText(applicationContext, response.body()!!.message, Toast.LENGTH_LONG).show()
-                            startActivity(Intent(applicationContext, HomeActivity::class.java))
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
                             finish()
                         } else {
                             // Handle unsuccessful response
@@ -89,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.home.setOnClickListener {
-            startActivity(Intent(applicationContext, HomeActivity::class.java))
+            startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
         }
     }
