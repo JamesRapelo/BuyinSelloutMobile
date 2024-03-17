@@ -1,7 +1,9 @@
 package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.Api
 
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.DefaultResponse
-import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.Products
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.FeaturedProductApi
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.LatestProductsApi
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -29,6 +31,11 @@ interface Api {
         @Field("password") password: String
     ):retrofit2.Call<DefaultResponse>
 
-    @GET("admin/products")
-    suspend fun getProducts(): List<Products>
+    @Headers("Accept: application/json")
+    @GET("latestProducts")
+    fun getProducts(): Call<List<LatestProductsApi>>
+
+    @Headers("Accept: application/json")
+    @GET("featuredProducts")
+    fun getFeaturedProducts(): Call<List<FeaturedProductApi>>
 }
