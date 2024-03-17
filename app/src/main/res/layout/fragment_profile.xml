@@ -84,7 +84,7 @@
                     app:layout_constraintVertical_bias="0.741" />
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/etEmail"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="36dp"
@@ -101,15 +101,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Phone"
-                    app:layout_constraintBottom_toTopOf="@+id/editText2"
+                    app:layout_constraintBottom_toTopOf="@+id/etPhone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.15"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText"
+                    app:layout_constraintTop_toBottomOf="@+id/etEmail"
                     app:layout_constraintVertical_bias="0.111" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/etPhone"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="36dp"
@@ -118,7 +118,7 @@
                     android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText" />
+                    app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
                 <Button
                     android:id="@+id/button1"
@@ -130,7 +130,7 @@
                     android:background="@color/navyBlue"
                     app:layout_constraintHorizontal_bias="0.18"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editText2" />
+                    app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

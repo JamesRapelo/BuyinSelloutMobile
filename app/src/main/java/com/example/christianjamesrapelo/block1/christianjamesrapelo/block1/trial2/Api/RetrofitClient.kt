@@ -1,5 +1,6 @@
 package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.Api
 
+import android.content.SharedPreferences
 import android.util.Base64
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private const val BASE_URL = "https://buyin-n-sellout-dd59ae5ce084.herokuapp.com/api/"
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
@@ -22,10 +24,16 @@ object RetrofitClient {
         .readTimeout(30, TimeUnit.SECONDS)
         .build()
 
+    fun setSharedPreferences(pref: SharedPreferences) {
+        sharedPreferences = pref
+    }
+
     private fun getAuthToken(): String {
-        val credentials = "root:"
-        val encodedCredentials = Base64.encode(credentials.toByteArray(), Base64.NO_WRAP)
-        return "Basic " + String(encodedCredentials)
+        if (!::sharedPreferences.isInitialized) {
+            throw IllegalStateException("SharedPreferences has not been initialized. Call setSharedPreferences() before using PHINMAClient.")
+        }
+        val authToken = sharedPreferences.getString("authToken", "")
+        return "Bearer $authToken"
     }
 
     val instance: Api by lazy {

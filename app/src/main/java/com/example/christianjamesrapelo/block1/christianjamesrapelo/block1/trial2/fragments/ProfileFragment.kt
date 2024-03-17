@@ -1,60 +1,70 @@
 package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.Api.RetrofitClient
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.R
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.databinding.FragmentProfileBinding
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentProfileBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        sharedPreferences = requireActivity().getSharedPreferences("myPreference", Context.MODE_PRIVATE)
+        val authToken = sharedPreferences.getString("authToken", "")
+        authToken.toString().let { getUserInfo(it) }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        return binding.root
+    }
+    private fun getUserInfo(authToken: String) {
+        RetrofitClient.instance.getUser("Bearer $authToken").enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val userData = response.body()
+                    if (userData != null) {
+                        updateInfo(userData)
+                    }
+
+                    val responseBody = response.body().toString()
+                    Log.d("Response", responseBody)
+                } else {
+                    // Handle unsuccessful response
+                    Toast.makeText(requireContext(), "Failed to get user info", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.e("AccountFragment", "Failed to get user info", t)
+                Toast.makeText(requireContext(), "Failed to get user info", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
+
+    private fun updateInfo(userData: User) {
+        if (userData != null) {
+            binding.etname.text = Editable.Factory.getInstance().newEditable(userData.name)
+            binding.etEmail.text = Editable.Factory.getInstance().newEditable(userData.email)
+            binding.etPhone.text = Editable.Factory.getInstance().newEditable(userData.phone)
+        }
+    }
+
 }
