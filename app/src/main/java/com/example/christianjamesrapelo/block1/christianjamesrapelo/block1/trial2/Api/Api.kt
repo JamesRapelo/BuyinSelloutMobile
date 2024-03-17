@@ -30,12 +30,12 @@ interface Api {
 
     @FormUrlEncoded
     @Headers("Accept: application/json")
-    @POST("account/process-register")
+    @POST("account/register")
     fun createUser(
         @Field("name") name:String,
         @Field("email") email:String,
         @Field("password") password:String,
-
+        @Field("password_confirmation") confirmpassword: String,
         ):retrofit2.Call<DefaultResponse>
 
     @FormUrlEncoded

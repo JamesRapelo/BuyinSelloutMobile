@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.Api.RetrofitClient
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.activity.FeaturedProductAdapter
@@ -33,12 +34,11 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         latestProductAdapter = LatestProductAdapter(emptyList())
         binding.recyclerViewLatestProducts.adapter = latestProductAdapter
-        binding.recyclerViewLatestProducts.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewLatestProducts.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         featuredProductAdapter = FeaturedProductAdapter(emptyList())
         binding.recyclerViewFeaturedProducts.adapter = latestProductAdapter
-        binding.recyclerViewFeaturedProducts.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewFeaturedProducts.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         latestProducts()
-
         return binding.root
     }
 

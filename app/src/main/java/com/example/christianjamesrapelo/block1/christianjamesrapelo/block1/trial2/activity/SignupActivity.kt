@@ -25,8 +25,9 @@ class SignupActivity : AppCompatActivity() {
             val name = binding.fullname.text.toString().trim()
             val email = binding.email.text.toString().trim()
             val password = binding.password.text.toString().trim()
+            val password_confirmation = binding.confirmpassword.text.toString().trim()
 
-            val signupDataJson = "{\"name\":\"$name\",\"email\":\"$email\",\"password\":\"$password\"}"
+            val signupDataJson = "{\"name\":\"$name\",\"email\":\"$email\",\"password\":\"$password\",\"password_confirmation\":\"$password_confirmation\"}"
 
             if (name.isEmpty()) {
                 binding.fullname.error = "Full Name Required"
@@ -50,7 +51,7 @@ class SignupActivity : AppCompatActivity() {
                 reader.beginObject()
                 reader.close()
 
-                RetrofitClient.instance.createUser(name, email, password)
+                RetrofitClient.instance.createUser(name, email, password, password_confirmation)
                     .enqueue(object :
                     Callback<DefaultResponse> {
                     override fun onResponse(

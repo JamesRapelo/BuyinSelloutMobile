@@ -33,7 +33,7 @@ class LatestProductAdapter(private var products: List<LatestProducts>): Recycler
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
-        holder.productTitleTextView.text = "Title: \n ${product.title}"
+        holder.productTitleTextView.text = "${product.title}"
 //        holder.productDescriptionTextView.text = product.description
         holder.productPriceTextView.text = "Price: \n ${product.price}"
 
