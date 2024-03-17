@@ -13,7 +13,6 @@ import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial
 class ProductAdapter(private var products: List<Products>): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     inner class ProductViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val productNameTextView: TextView = itemView.findViewById(R.id.textViewProductName)
-        val productImageView: ImageView = itemView.findViewById(R.id.imageViewProduct)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -33,10 +32,5 @@ class ProductAdapter(private var products: List<Products>): RecyclerView.Adapter
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
         holder.productNameTextView.text = product.title
-        Glide.with(holder.itemView)
-            .load(product.image)
-            .placeholder(R.drawable.placeholder_image)
-            .error(R.drawable.placeholder_image)
-            .into(holder.productImageView)
     }
 }

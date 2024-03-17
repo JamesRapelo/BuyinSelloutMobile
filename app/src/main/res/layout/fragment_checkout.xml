@@ -340,7 +340,7 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/tv_prdctprice"
                     tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="354dp" />
+                    tools:layout_editor_absoluteX="256dp" />
 
                 <TextView
                     android:id="@+id/shippingprice"
@@ -355,6 +355,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_subtotalprice" />
 
+
                 <TextView
                     android:id="@+id/tv_shippingprice"
                     android:layout_width="wrap_content"
@@ -366,8 +367,7 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/tv_subtotalprice"
                     tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="354dp" />
-
+                    tools:layout_editor_absoluteX="256dp" />
 
                 <TextView
                     android:id="@+id/tv_total"
@@ -393,7 +393,7 @@
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/tv_shippingprice"
                     tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="354dp" />
+                    tools:layout_editor_absoluteX="256dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

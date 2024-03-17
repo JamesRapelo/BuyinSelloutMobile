@@ -12,12 +12,11 @@ interface Api {
 
     @FormUrlEncoded
     @Headers("Accept: application/json")
-    @POST("account/process-register")
+    @POST("account/register")
     fun createUser(
         @Field("name") name:String,
         @Field("email") email:String,
         @Field("password") password:String,
-
         ):retrofit2.Call<DefaultResponse>
 
     @FormUrlEncoded
@@ -29,6 +28,6 @@ interface Api {
         @Field("password") password: String
     ):retrofit2.Call<DefaultResponse>
 
-    @GET("admin/products")
+    @GET("home")
     suspend fun getProducts(): List<Products>
 }
