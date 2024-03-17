@@ -3,16 +3,18 @@ package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.tria
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.R
-import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.Products
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.LatestProducts
+import com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2.model.LatestProductsApi
 
-class ProductAdapter(private var products: List<Products>): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
+class LatestProductAdapter(private var products: List<LatestProducts>): RecyclerView.Adapter<LatestProductAdapter.ProductViewHolder>() {
     inner class ProductViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val productNameTextView: TextView = itemView.findViewById(R.id.textViewProductName)
+        val productTitleTextView: TextView = itemView.findViewById(R.id.textViewProductTitle)
+//        val productDescriptionTextView: TextView = itemView.findViewById(R.id.textViewProductDescription)
+        val productPriceTextView: TextView = itemView.findViewById(R.id.textViewProductPrice)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -24,13 +26,16 @@ class ProductAdapter(private var products: List<Products>): RecyclerView.Adapter
         return products.size
     }
 
-    fun updateData(newProducts: List<Products>) {
+    fun updateData(newProducts: List<LatestProducts>) {
         products = newProducts
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
-        holder.productNameTextView.text = product.title
+        holder.productTitleTextView.text = "Title: \n ${product.title}"
+//        holder.productDescriptionTextView.text = product.description
+        holder.productPriceTextView.text = "Price: \n ${product.price}"
+
     }
 }
