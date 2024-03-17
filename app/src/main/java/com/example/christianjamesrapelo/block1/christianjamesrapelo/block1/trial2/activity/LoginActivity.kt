@@ -1,6 +1,8 @@
 package com.example.christianjamesrapelo.block1.christianjamesrapelo.block1.trial2
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.JsonReader
 import android.util.Log
@@ -16,12 +18,13 @@ import java.io.StringReader
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var sharedPreferences : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        sharedPreferences = getSharedPreferences("myPreference", Context.MODE_PRIVATE)
         binding.loginButton.setOnClickListener {
             val email = binding.logemail.text.toString()
             val password = binding.logpassword.text.toString()
@@ -90,5 +93,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
         }
+    }
+
+    private fun saveTokenToSharedPreferences(token: String?) {
+        val editor = sharedPreferences.edit()
+        editor.putString("authToken", token)
+        editor.apply()
     }
 }
